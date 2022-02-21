@@ -13,5 +13,4 @@ export const PrimaryButton = Template.bind({});
 
 PrimaryButton.args = {
   title: "Primary",
-  onClick: action('button-clicked'),
 };
