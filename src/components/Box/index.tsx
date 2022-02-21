@@ -1,6 +1,6 @@
-import classes from './Box.scss';
+import classes from "./Box.module.scss";
 
-interface IBoxProps {
+export interface IBoxProps {
   color?: string;
   size?: number;
 }
@@ -11,7 +11,7 @@ export const Box = (props: IBoxProps) => {
   return (
     <div
       className={classes.container}
-      style={{ color, width: size, height: size }}
+      style={{ backgroundColor: color, width: size, height: size }}
     />
   );
 };
