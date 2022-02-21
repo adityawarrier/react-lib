@@ -27,6 +27,6 @@
     "noUncheckedIndexedAccess": true /* Include 'undefined' in index signature results */,
     "noImplicitOverride": true /* Ensure overriding members in derived classes are marked with an override modifier. */
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "declaration.d.ts"],
   "exclude": ["node-modules", "src/**/*.stories.tsx"]
 }
