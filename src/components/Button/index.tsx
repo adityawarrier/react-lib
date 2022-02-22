@@ -6,16 +6,9 @@ export interface IButtonProps {
 
 export const Button = (props: IButtonProps) => {
   const { title, onClick } = props;
-  console.log(onClick);
 
   return (
-    <button
-      className={classes.container}
-      onClick={() => {
-        console.log("onClick called!");
-        onClick();
-      }}
-    >
+    <button className={classes.container} onClick={onClick}>
       {title.toUpperCase()}
     </button>
   );
