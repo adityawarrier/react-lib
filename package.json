@@ -21,8 +21,8 @@
     "storybook": "start-storybook -p 6006",
     "build": "rollup -c rollup.config.js",
     "predeploy": "npm run build:storybook",
-    "build:storybook": "build-storybook",
-    "deploy": "gh-pages -d storybook-static"
+    "build:storybook": "build-storybook --output-dir ./dist-storybook",
+    "deploy": "gh-pages -d dist-storybook"
   },
   "author": "Aditya Warrier",
   "license": "ISC",
