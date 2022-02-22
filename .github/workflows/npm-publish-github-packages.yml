@@ -28,8 +28,12 @@ jobs:
   deploy-storybook:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
       - run: npm i
-      - run: npm run deploy
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.DEPLOY_TOKEN}}
+      - run: npm run build:storybook
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: dist-storybook # The folder the action should deploy.
