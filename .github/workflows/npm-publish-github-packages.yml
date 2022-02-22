@@ -30,6 +30,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm i
-      - run: npm deploy
+      - run: npm run deploy
         env:
           NODE_AUTH_TOKEN: ${{secrets.DEPLOY_TOKEN}}
