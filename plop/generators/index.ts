@@ -1,5 +1,5 @@
-import { componentGenerator } from "./Components";
-import { utilGenerator } from "./Utils";
+import { componentGenerator } from "./Component";
+import { utilGenerator } from "./Util";
 
 export const PlopGenerators = {
   componentGenerator,

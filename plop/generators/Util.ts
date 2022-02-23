@@ -1,3 +1,5 @@
+import { StringUtils } from "../../src/utils";
+
 export const utilGenerator = {
   description: "Generate a new Util",
   prompts: [
@@ -11,15 +13,17 @@ export const utilGenerator = {
     {
       type: "add",
       path: "src/utils/{{titleCase name}}.ts",
-      templateFile: "plop/templates/{{title}}/index.hbs",
+      templateFile: "plop/templates/util/index.hbs",
     },
     {
       type: "modify",
       path: "src/utils/index.ts",
-      transform: (fileContent: string, { name }) => {
+      transform: (fileContent, { name }) => {
         console.log(fileContent.slice(-1));
 
-        return `${fileContent}export { ${name}Utils } from "./${name}";\n`;
+        return `${fileContent}export { ${StringUtils.toTitleCase(
+          name
+        )}Utils } from "./${StringUtils.toTitleCase(name)}";\n`;
       },
     },
   ],

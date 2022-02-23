@@ -1,3 +1,5 @@
+import { StringUtils } from "../../src/utils";
+
 export const componentGenerator = {
   description: "Generate a new UI component",
   prompts: [
@@ -11,7 +13,7 @@ export const componentGenerator = {
     {
       type: "add",
       path: "src/components/{{titleCase name}}/index.tsx",
-      templateFile: "plop/templates/components/index.hbs",
+      templateFile: "plop/templates/component/index.hbs",
     },
     {
       type: "add",
@@ -20,13 +22,15 @@ export const componentGenerator = {
     {
       type: "add",
       path: "src/components/{{titleCase name}}/{{titleCase name}}.stories.tsx",
-      templateFile: "plop/templates/components/story.hbs",
+      templateFile: "plop/templates/component/story.hbs",
     },
     {
       type: "modify",
       path: "src/components/index.ts",
       transform: (fileContent, { name }) => {
-        return `${fileContent}export * from "./${(name)}";\n`;
+        return `${fileContent}export * from "./${StringUtils.toTitleCase(
+          name
+        )}";\n`;
       },
     },
   ],
