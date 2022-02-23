@@ -6,7 +6,7 @@ export interface IBoxProps {
 }
 
 export const Box = (props: IBoxProps) => {
-  const { color, size = 100 } = props;
+  const { color = 'red', size = 100 } = props;
 
   return (
     <div

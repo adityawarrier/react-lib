@@ -1,0 +1,15 @@
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { {{titleCase name}}, I{{titleCase name}}Props } from "./index";
+
+export default {
+  title: "{{titleCase name}}",
+  component: {{titleCase name}},
+} as ComponentMeta<typeof {{titleCase name}}>;
+
+const Template: ComponentStory<typeof {{titleCase name}}> = (args: I{{titleCase name}}Props) => (
+  <{{titleCase name}} {...args} />
+);
+
+export const {{titleCase name}}1 = Template.bind({});
+{{titleCase name}}1.args = {
+};
