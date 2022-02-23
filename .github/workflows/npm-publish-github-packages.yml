@@ -21,5 +21,13 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm publish
+      - run: npm run deploy
         env:
           NODE_AUTH_TOKEN: ${{secrets.DEPLOY_TOKEN}}
+  
+  name: Deploy with gh-pages
+  run: |
+    git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/react-lib.git
+    npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
+  env:
+    GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
