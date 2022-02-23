@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  publish:
+  deploy-storybook:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -19,7 +19,10 @@ jobs:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
-      - run: npm run build
-      - run: npm publish
+      - run: npm run build:storybook
+      - name: Deploy
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
