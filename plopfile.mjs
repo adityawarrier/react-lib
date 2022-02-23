@@ -1,3 +1,9 @@
+const toTitleCase = (str) => {
+  return str.replace(/\w\S*/g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+};
+
 export default function (
   /** @type {import('plop').NodePlopAPI} */
   plop
@@ -16,7 +22,7 @@ export default function (
       {
         type: "add",
         path: "src/components/{{titleCase name}}/index.tsx",
-        templateFile: "plop/templates/components/index.hbs",
+        templateFile: "plop/templates/component/index.hbs",
       },
       {
         type: "add",
@@ -25,13 +31,13 @@ export default function (
       {
         type: "add",
         path: "src/components/{{titleCase name}}/{{titleCase name}}.stories.tsx",
-        templateFile: "plop/templates/components/story.hbs",
+        templateFile: "plop/templates/component/story.hbs",
       },
       {
         type: "modify",
         path: "src/components/index.ts",
         transform: (fileContent, { name }) => {
-          return `${fileContent}export * from "./${name}";\n`;
+          return `${fileContent}export * from "./${toTitleCase(name)}";\n`;
         },
       },
     ],
@@ -49,7 +55,7 @@ export default function (
       {
         type: "add",
         path: "src/utils/{{titleCase name}}.ts",
-        templateFile: "plop/templates/utils/{{title}}/index.hbs",
+        templateFile: "plop/templates/util/index.hbs",
       },
       {
         type: "modify",
@@ -57,11 +63,14 @@ export default function (
         transform: (fileContent, { name }) => {
           console.log(fileContent.slice(-1));
 
-          return `${fileContent}export { ${name}Utils } from "./${name}";\n`;
+          return `${fileContent}export { ${toTitleCase(
+            name
+          )}Utils } from "./${toTitleCase(name)}";\n`;
         },
       },
     ],
   });
 
   // HELPERS
+  plop.setHelper("titleCase", toTitleCase);
 }
