@@ -28,7 +28,7 @@ jobs:
   deploy-storybook:
     name: Deploy with gh-pages
     steps:
-      run: |
+      - run: |
         git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/react-lib.git
         npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
       env:
