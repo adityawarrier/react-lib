@@ -21,15 +21,13 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm publish
-      - run: npm run deploy
         env:
-          NODE_AUTH_TOKEN: ${{secrets.DEPLOY_TOKEN}}
-  
-  deploy-storybook:
-    name: Deploy with gh-pages
-    steps:
-      - run: |
-        git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/react-lib.git
-        npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
-      env:
-        GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      
+      - run: npm run build:storybook
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
