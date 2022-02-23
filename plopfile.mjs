@@ -22,7 +22,7 @@ export default function (
       {
         type: "add",
         path: "src/components/{{titleCase name}}/index.tsx",
-        templateFile: "plop/templates/component/index.hbs",
+        templateFile: "plop-templates/component/index.hbs",
       },
       {
         type: "add",
@@ -31,7 +31,7 @@ export default function (
       {
         type: "add",
         path: "src/components/{{titleCase name}}/{{titleCase name}}.stories.tsx",
-        templateFile: "plop/templates/component/story.hbs",
+        templateFile: "plop-templates/component/story.hbs",
       },
       {
         type: "modify",
@@ -55,7 +55,7 @@ export default function (
       {
         type: "add",
         path: "src/utils/{{titleCase name}}.ts",
-        templateFile: "plop/templates/util/index.hbs",
+        templateFile: "plop-templates/util/index.hbs",
       },
       {
         type: "modify",
